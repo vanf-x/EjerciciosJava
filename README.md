@@ -1,6 +1,49 @@
 # EjerciciosJava
 Algunos ejercicios varios de Java
 /*--------------------------------------------------------------------------------*/
+Ejercicio 10
+Escribe un programa que genere 20 números enteros aleatorios entre 0 y 100
+y que los almacene en un array. El programa debe ser capaz de pasar todos
+los números pares a las primeras posiciones del array (del 0 en adelante) y
+todos los números impares a las celdas restantes. Utiliza arrays auxiliares si
+es necesario.
+/*--------------------------------------------------------------------------------*/
+
+package repasoHastaSockets;
+
+public class random_shit1 {
+
+	public static void main(String[] args) {
+
+		int indice = 0;
+		int indiceFin = 19;
+		int arr1[] = new int[20];
+		int arr2[] = new int[20];
+		for (int i = 0; i < arr1.length; i++) {
+			arr1[i] = (int) (Math.random() * (100 - 0 + 1) + (0));
+		}
+		System.out.println("Arreglo inicial");
+		for (int i : arr1) {
+			System.out.print(i + " - ");
+		}
+
+		for (int i = 0; i < arr1.length; i++) {
+			if (arr1[i] % 2 == 0) {
+				arr2[indice] = arr1[i];
+				indice++;
+			} else {
+				arr2[indiceFin] = arr1[i];
+				indiceFin--;
+			}
+		}
+		System.out.println("");
+		System.out.println("Arreglo final");
+		for (int i : arr2) {
+			System.out.print(i + " - ");
+		}
+	}
+}
+/*--------------------------------------------------------------------------------*/
 Ejercicio 13
 Escribe un programa que rellene un array de 100 elementos con números ente-
 ros aleatorios comprendidos entre 0 y 500 (ambos incluidos). A continuación
