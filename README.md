@@ -122,3 +122,101 @@ public class random_shit1 {
 
 }
 /*--------------------------------------------------------------------------------*/
+Ejercicio 15
+Un restaurante nos ha encargado una aplicación para colocar a los clientes en
+sus mesas. En una mesa se pueden sentar de 0 (mesa vacía) a 4 comensales
+(mesa llena). Cuando llega un cliente se le pregunta cuántos son. De momento
+el programa no está preparado para colocar a grupos mayores a 4, por tanto,
+si un cliente dice por ejemplo que son un grupo de 6, el programa dará el
+mensaje “Lo siento, no admitimos grupos de 6, haga grupos de 4
+personas como máximo e intente de nuevo”. Para el grupo que llega,
+se busca siempre la primera mesa libre (con 0 personas). Si no quedan mesas
+libres, se busca donde haya un hueco para todo el grupo, por ejemplo si el
+grupo es de dos personas, se podrá colocar donde haya una o dos personas.
+Inicialmente, las mesas se cargan con valores aleatorios entre 0 y 4. Cada
+vez que se sientan nuevos clientes se debe mostrar el estado de las mesas.
+Los grupos no se pueden romper aunque haya huecos sueltos suficientes. El
+funcionamiento del programa se ilustra a continuación:
+Ejemplo:
+┌─────────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┐
+│Mesa no │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 10 │
+├─────────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┤
+│Ocupación│ 3 │ 2 │ 0 │ 2 │ 4 │ 1 │ 0 │ 2 │ 1 │ 1 │
+└─────────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘
+¿Cuántos son? (Introduzca -1 para salir del programa): 2
+Por favor, siéntense en la mesa número 3.
+┌─────────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┐
+│Mesa no │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 10 │
+├─────────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┤
+│Ocupación│ 3 │ 2 │ 2 │ 2 │ 4 │ 1 │ 0 │ 2 │ 1 │ 1 │
+└─────────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘
+¿Cuántos son? (Introduzca -1 para salir del programa): 4
+Por favor, siéntense en la mesa número 7.
+┌─────────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┐
+│Mesa no │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 10 │
+├─────────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┤
+│Ocupación│ 3 │ 2 │ 2 │ 2 │ 4 │ 1 │ 4 │ 2 │ 1 │ 1 │
+└─────────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘
+¿Cuántos son? (Introduzca -1 para salir del programa): 3
+Tendrán que compartir mesa. Por favor, siéntense en la mesa número 6.
+┌─────────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┐
+│Mesa no │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 10 │
+├─────────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┤
+│Ocupación│ 3 │ 2 │ 2 │ 2 │ 4 │ 4 │ 4 │ 2 │ 1 │ 1 │
+└─────────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘
+¿Cuántos son? (Introduzca -1 para salir del programa): 4
+Lo siento, en estos momentos no queda sitio.
+┌─────────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┐
+│Mesa no │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 10 │
+├─────────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┤
+│Ocupación│ 3 │ 2 │ 2 │ 2 │ 4 │ 4 │ 4 │ 2 │ 1 │ 1 │
+/*--------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class random_shit1 {
+
+	public static void main(String[] args) {
+		System.out.println("¿Cuántos son? (Introduzca ' -1 ' para salir del programa)");
+		Scanner sn = new Scanner(System.in);
+		int decision = sn.nextInt();
+		sn.close();
+		if (decision != -1) {
+			boolean salir = false;
+			int contador = 0;
+			System.out.println();
+			int arr1[] = new int[10];
+			for (int i = 0; i < arr1.length; i++) {
+				arr1[i] = (int) (Math.random() * (4 - 0 + 1) + (0));
+			}
+
+			for (int i = 0; i < arr1.length; i++) {
+				System.out.println("Mesa" + (i + 1) + ": " + arr1[i]);
+			}
+
+			if (decision > 4) {
+				System.out.println("Lo siento, no admitimos grupos de " + decision + ". Haga grupos de 4"
+						+ " personas como máximo e intente de nuevo");
+			} else {
+				System.out.println("Puede ubicarse en la mesa: ");
+				while (!salir) {
+					if (arr1[contador] + decision <= 4) {
+						System.out.println(contador + 1);
+						salir = true;
+					}
+					contador++;
+					if (contador >= arr1.length) {
+						salir = true;
+						System.out.println("No hay lugar disponible");
+					}
+				}
+			}
+		} else {
+			System.out.println("Hasta luego");
+		}
+
+	}
+
+}
+/*--------------------------------------------------------------------------------*/
+
+
